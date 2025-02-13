@@ -5,19 +5,10 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",
-    [
-      "@nuxtjs/google-fonts",
-      {
-        families: {
-          Lato: {
-            weight: [100, 400, 700],
-            italic: [300],
-          },
-        },
-      },
-    ],
+    "@nuxtjs/google-fonts",
     "@nuxt/icon",
-  ],
+  ],   
+   
   css: ["~/assets/css/tailwind.css"],
   shadcn: {
     prefix: "",
