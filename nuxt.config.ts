@@ -1,5 +1,6 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
+
   modules: [
     "@nuxt/image",
     "@nuxt/ui",
@@ -9,9 +10,12 @@ export default defineNuxtConfig({
     "@nuxt/icon",
   ],   
    
+
   css: ["~/assets/css/tailwind.css"],
   shadcn: {
     prefix: "",
     componentDir: "./components/ui",
   },
+
+  compatibilityDate: "2025-02-15",
 });
