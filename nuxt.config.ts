@@ -8,8 +8,7 @@ export default defineNuxtConfig({
     "shadcn-nuxt",
     "@nuxtjs/google-fonts",
     "@nuxt/icon",
-  ],   
-   
+  ],
 
   css: ["~/assets/css/tailwind.css"],
   shadcn: {

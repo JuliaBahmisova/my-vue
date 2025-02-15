@@ -8,6 +8,7 @@
         "Nuxtlink",
         "Raleway",
         "shadcn",
+        "vueuse",
         "wght"
     ]
 }
