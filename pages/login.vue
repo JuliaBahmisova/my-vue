@@ -1,10 +1,42 @@
 <script setup lang="js">
+import { v4 as uuid } from 'uuid'
+
 useHead({
   title: "Login | CRM System",
 })
 const emailRef = ref("")
 const passwordRef = ref("")
 const nameRef = ref("")
+
+const authStore = useAuthStore()
+const isLoadingStore = useIsLoadingStore() 
+const router = useRouter()
+
+const login = async () => { 
+  isLoadingStore.set(true)
+  await account.createEmailPasswordSession(emailRef.value, passwordRef.value)
+  const response = await account.get()
+  if (response) {
+    authStore.set({
+      email: response.email,
+      name: response.name,
+      status: response.status,
+      
+    })
+  }
+  emailRef.value = ""
+  passwordRef.value = ""
+  nameRef.value = ""
+  
+  await router.push("/")
+  isLoadingStore.set(false)
+}
+
+const register = async () => { 
+  await account.create(uuid(), emailRef.value, passwordRef.value, nameRef.value)
+  await login()
+}
+
 </script>
 
 <template>
@@ -33,8 +65,8 @@ const nameRef = ref("")
           />
         </div>
         <div class="flex items-center justify-center gap-5 mt-5">
-          <Button type="button">Login</Button>
-          <Button type="button">Register</Button>
+          <Button type="button" @click="login">Login</Button>
+          <Button type="button" @click="register">Register</Button>
         </div>
       </form>
     </div>
